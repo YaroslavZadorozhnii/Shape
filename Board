@@ -1,0 +1,130 @@
+
+
+public class Board {
+	private Shape a;
+	private Shape b;
+	private Shape c;
+	private Shape d;
+    private Shape[] board = new Shape[4];
+
+	public Board() {
+	}
+
+	public Shape[] getBoard() {
+		return board;
+	}
+
+	public void setBoard(Shape[] board) {
+		this.board = board;
+	}
+
+	public Shape getA() {
+		return a;
+	}
+
+	public void setA(Shape a) {
+		this.a = a;
+	}
+
+	public Shape getB() {
+		return b;
+	}
+
+	public void setB(Shape b) {
+		this.b = b;
+	}
+
+	public Shape getC() {
+		return c;
+	}
+
+	public void setC(Shape c) {
+		this.c = c;
+	}
+
+	public Shape getD() {
+		return d;
+	}
+
+	public void setD(Shape d) {
+		this.d = d;
+	}
+    //Записывает Shape на доску если ячейка свободна
+	public void addShape(Shape a, int number) {
+		if (board[number] == null) {
+			board[number] = a;
+		}else{
+			System.out.println("This cell (" + number + ") is not free. Here is " + board[number].getClass().getName());
+		}
+	}
+    // Освобождает указанную ячейку доски
+	public void removeShape(int number) {
+		board[number] = null;
+	}
+    // Освобождает доску от указанных Shape
+	public void removeShape(Shape a) {
+		for (int i = 0; i < 4; i++) {
+			if (board[i].equals(a))
+				board[i] = null;
+		}
+	}
+    // Выводит доску на консоль
+	public void showBoard() {
+
+		String s = "";
+		double sum = 0;
+		for (int i = 0; i < 4; i++) {
+			if (board[i] != null) {
+				sum += board[i].getArea();
+			}
+		}
+		String name = "Sum area " + Double.toString((sum));
+		for (int i = 0; i < 30; i++) {
+			for (int j = 0; j < 70; j++) {
+				if (i == 0 || i == 29 || i == 13 || i == 15 || j == 0
+						|| j == 69 || j == 34 || j == 35) {
+					System.out.print("*");
+				} else {
+
+					if (i == 14 && j == 35 - name.length() / 2) {
+						System.out.print(name);
+						j += name.length();
+					} else {
+						if (board[0] != null
+								&& i == 7
+								&& j == (35 - board[0].getClass().getName()
+										.split(s).length) / 2) {
+							System.out.print(board[0].getClass().getName());
+							j += board[0].getClass().getName().split(s).length;
+						}
+						if (board[1] != null
+								&& i == 7
+								&& j == 35 + (35 - board[1].getClass()
+										.getName().split(s).length) / 2) {
+							System.out.print(board[1].getClass().getName());
+							j += board[1].getClass().getName().split(s).length;
+						}
+						if (board[2] != null
+								&& i == 22
+								&& j == (35 - board[2].getClass().getName()
+										.split(s).length) / 2) {
+							System.out.print(board[2].getClass().getName());
+							j += board[2].getClass().getName().split(s).length;
+						}
+						if (board[3] != null
+								&& i == 22
+								&& j == 35 + (35 - board[3].getClass()
+										.getName().split(s).length) / 2) {
+							System.out.print(board[3].getClass().getName());
+							j += board[3].getClass().getName().split(s).length;
+						}
+					}
+					System.out.print(" ");
+				}
+			}
+
+			System.out.println();
+		}
+	}
+
+}
