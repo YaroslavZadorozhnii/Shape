@@ -1,0 +1,31 @@
+public class Main {
+
+	public static void main(String[] args) {
+		
+		Point a = new Point(1,1);
+		Point b = new Point(3,3);
+		Point c = new Point(3,1);
+		
+		Point a1 = new Point (1,1);
+		Point b1 = new Point (1,5);
+		Point c1 = new Point (5,5);
+		Point d1 = new Point (5,1);
+		
+		Shape abc = new Triangle(a,b,c);
+		Shape abcd = new Rectangle(a1,b1,c1,d1);
+		Shape ab = new Circle(a1, b1);
+		Board board = new Board();
+		board.addShape(abc, 0);
+		board.addShape(ab, 1);
+		board.addShape(abcd, 3);
+		board.addShape(ab, 2);
+		board.removeShape(2);
+		board.addShape(abc, 2);
+		board.showBoard();
+		
+		
+	
+
+	}
+
+}
