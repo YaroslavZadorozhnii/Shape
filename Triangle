@@ -1,0 +1,57 @@
+import java.time.Period;
+
+public class Triangle extends Shape{
+	private Point a;
+	private Point b;
+	private Point c;
+	
+	public Triangle(){
+		
+	}
+
+	public Triangle(Point a, Point b, Point c) {
+		setA(a);
+		setB(b);
+		setC(c);
+	}
+
+	public Point getA() {
+		return a;
+	}
+
+	public void setA(Point a) {
+		this.a = a;
+	}
+
+	public Point getB() {
+		return b;
+	}
+
+	public void setB(Point b) {
+		this.b = b;
+	}
+
+	public Point getC() {
+		return c;
+	}
+
+	public void setC(Point c) {
+		this.c = c;
+	}
+    @Override
+	double getArea() {
+		double area = Math.sqrt((getPerimetr() / 2) *
+				(( getPerimetr() / 2 ) - longLine(a, b)) *
+						(( getPerimetr() / 2 ) - longLine(a, c)) * 
+						((getPerimetr() / 2) - longLine(c, b)));
+		return area;
+	}
+    @Override
+	double getPerimetr() {
+		double perimetr = longLine(a, b) + longLine(a, c) + longLine(c, b);
+		return perimetr;
+	
+	}
+
+		
+}
