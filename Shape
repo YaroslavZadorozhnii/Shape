@@ -1,0 +1,39 @@
+public abstract class Shape {
+	Point a;
+	Point b;
+	Point c;
+	Point d;
+
+	abstract double getArea();
+
+	abstract double getPerimetr();
+    // Для удобства добавил сюда метод который вычисляет длину отрезка между координатами
+	public double longLine(Point a, Point b) {
+		double longLine = Math.sqrt(Math.pow(b.getY() - a.getY(), 2)
+				+ (Math.pow(b.getX() - a.getX(), 2)));
+
+		return longLine;
+
+	}
+
+	@Override
+	public boolean equals(Object x){
+		if(this == x){
+			return true;
+		}
+		if(x == null || getClass() != x.getClass()){
+			return false;
+		}
+		// Переопределил для собственных нужд
+		Shape shape = (Shape) x;
+		return  a.getX() == shape.a.getX() &&
+				a.getY() == shape.a.getY() &&
+				b.getX() == shape.b.getX() &&
+				b.getY() == shape.b.getY() &&
+				c.getX() == shape.c.getX() &&
+				c.getY() == shape.c.getY() &&
+				d.getX() == shape.d.getX() &&
+				d.getY() == shape.d.getY();
+	}
+	
+}
